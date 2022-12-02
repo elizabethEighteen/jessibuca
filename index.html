@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 1000px;
+            height: 800px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script src="./public/jessibuca.js"></script>
+    <!-- <script src="./decoder.js"></script> -->
+
+    <script>
+        let c = document.getElementById('container')
+        console.log(c)
+        let jessibuca = new window.Jessibuca({
+            container: c,
+            videoBuffer: 0.2,
+            isResize: false,
+            isFlv:true,
+            text:'',
+            loadingText: '加载中',
+            decoder:'./public/decoder.js',
+            useMSE:false,
+            dubug:false,
+            useWCS:false,
+            operateBtns:{},
+            isNotMute:false,
+
+        })
+        setTimeout(() => {
+            console.log(1)
+            jessibuca.play('ws://10.6.1.139/rtp/34020000001320000004_34020000001320000004.live.flv').then(()=>{
+                console.log('s')
+            }).catch(e=>{
+                console.log('f',e)
+            })
+        }, 2000);
+    </script>
+
+</body>
+</html>
